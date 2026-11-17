@@ -46,6 +46,25 @@ nav a:hover{background:var(--light)}nav a[aria-current=page]{background:var(--so
 .hero-image-label{left:17px;background:#241c13d9;color:white;max-width:calc(100% - 181px)}
 .hero-gallery-label{right:17px;background:#fff;color:var(--ink)}
 .hero-gallery-label svg{width:14px;height:14px;vertical-align:-2px;margin-right:4px}
+.photo-carousel{min-width:0}
+.photo-stage{position:relative;isolation:isolate;border-radius:var(--r);overflow:hidden;background:#201b15;touch-action:pan-y}
+.photo-primary{position:relative;width:100%;display:block;padding:0;margin:0;text-align:left;color:#fff}
+.photo-primary:focus-visible{outline-offset:-5px}
+.photo-primary img{display:block;width:100%;height:clamp(340px,57vw,620px);object-fit:contain;object-position:center;background:#241e17}
+.photo-enlarge{position:absolute;right:13px;bottom:13px;font-size:13px;font-weight:650;line-height:1.2;border-radius:999px;padding:7px 10px;background:#221a11e8;color:#fff}
+.photo-enlarge svg{width:15px;height:15px;vertical-align:-2px;margin-right:4px;color:#fff}
+.photo-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;padding:8px;border:1px solid #fff9;border-radius:50%;background:#251d12ed;color:white;place-items:center}
+.photo-carousel.is-ready .photo-arrow{display:grid}
+.photo-arrow svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;width:22px;height:22px}
+.photo-arrow:hover{background:#3c2e20}.photo-arrow:focus-visible{outline-color:white}
+.photo-prev{left:13px}.photo-next{right:13px}
+.photo-caption{margin:12px 0 8px;text-align:center;font-size:14px;font-weight:650;color:var(--muted)}
+.photo-thumbs{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 8px;scroll-padding-inline:4px;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#9b7a51 transparent}
+.photo-thumb{flex:1 0 87px;display:block;max-width:110px;overflow:hidden;opacity:.82;border:2px solid transparent;border-radius:10px;background:var(--soft);scroll-snap-align:start}
+.photo-thumb:hover,.photo-thumb[aria-current=true]{opacity:1}
+.photo-thumb[aria-current=true]{border-color:var(--accent)}
+.photo-thumb:focus-visible{outline-offset:0}
+.photo-thumb img{width:100%;height:58px;object-fit:cover;display:block}
 .quick-strip{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 0 0}
 .quick-strip ul{padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 17px;margin:0;color:var(--muted);font-size:14px}
 .quick-strip li{display:flex;align-items:center;gap:7px;font-weight:620}
@@ -64,11 +83,6 @@ nav a:hover{background:var(--light)}nav a[aria-current=page]{background:var(--so
 .amenity h3{font:700 16px/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:10px 0 4px}
 .amenity p{font-size:14px;color:var(--muted)}
 .gallery .section-head{margin-bottom:16px}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.gallery-grid button{position:relative;display:block;width:100%;border:0;padding:0;overflow:hidden;border-radius:16px;background:var(--soft);text-align:left;color:var(--ink)}
-.gallery-grid img{display:block;width:100%;aspect-ratio:1.36;object-fit:cover;transition:transform .25s}
-.gallery-grid button:hover img{transform:scale(1.035)}
-.gallery-grid span{position:absolute;left:8px;right:auto;bottom:8px;max-width:calc(100% - 16px);background:#fffef8f2;color:var(--ink);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:650;line-height:1.25}
 .location{border-top:1px solid var(--line);padding-top:clamp(24px,4vw,40px);display:grid;grid-template-columns:.87fr 1.13fr;gap:clamp(18px,4vw,55px)}
 .location .nearby{background:var(--soft);border:1px solid var(--line);border-radius:17px;padding:20px;display:grid;gap:6px;align-self:start}
 .location .nearby p{color:var(--muted)}
@@ -92,8 +106,8 @@ input,select{width:100%;min-width:0;min-height:44px;border:1px solid #cfc3b1;bor
 .viewer img{display:block;width:100%;height:min(64dvh,620px);object-fit:contain;background:#231d16}
 .viewer button{font:inherit;font-size:14px;border:1px solid var(--line);background:white;border-radius:999px;min-width:44px;min-height:44px;padding:7px 10px;color:var(--ink)}
 .viewer button:hover{background:var(--soft)}
-@media(max-width:730px){.container{width:calc(100% - 30px)}.site-header{padding-top:14px}nav{margin-bottom:24px}.quick-strip{align-items:start}.feature,.location,.booking{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}.gallery-grid button:last-child:nth-child(odd){grid-column:1/-1}.gallery-grid button:last-child:nth-child(odd) img{aspect-ratio:2.1}}
-@media(max-width:460px){.intro{gap:8px}.lede{font-size:15px}.hero img{height:320px}.hero-image-label,.hero-gallery-label{bottom:10px;padding:7px 9px;font-size:12px}.hero-image-label{left:10px;max-width:calc(100% - 145px)}.hero-gallery-label{right:10px}.quick-strip{flex-direction:column}.quick-strip ul{gap:7px 12px}.quick-strip>.button{width:100%}.amenity{padding:13px}.gallery-grid{gap:8px}.gallery-grid button{border-radius:11px}.gallery-grid span{font-size:11px;padding:4px 8px}.location .nearby{padding:15px}}
+@media(max-width:730px){.container{width:calc(100% - 30px)}.site-header{padding-top:14px}nav{margin-bottom:24px}.quick-strip{align-items:start}.feature,.location,.booking{grid-template-columns:1fr}}
+@media(max-width:460px){.intro{gap:8px}.lede{font-size:15px}.hero img{height:320px}.hero-image-label,.hero-gallery-label{bottom:10px;padding:7px 9px;font-size:12px}.hero-image-label{left:10px;max-width:calc(100% - 145px)}.hero-gallery-label{right:10px}.photo-primary img{height:clamp(270px,85vw,390px)}.photo-prev{left:7px}.photo-next{right:7px}.photo-arrow{width:44px;height:44px}.photo-enlarge{right:8px;bottom:8px;font-size:12px}.photo-thumb{flex-basis:64px}.photo-thumb img{height:46px}.quick-strip{flex-direction:column}.quick-strip ul{gap:7px 12px}.quick-strip>.button{width:100%}.amenity{padding:13px}.location .nearby{padding:15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -119,7 +133,7 @@ input,select{width:100%;min-width:0;min-height:44px;border:1px solid #cfc3b1;bor
 <h1 id="intro-title">A studio with a golf-course view</h1>
 <p class="lede">Settle into your own studio with a private balcony and full kitchen, about a mile from Mohegan Sun.</p>
 </div>
-<button class="hero" type="button" data-photo="Living area &amp; fireplace" aria-label="Open photo gallery, living area and fireplace">
+<button class="hero" id="launch-hero-gallery" type="button" data-photo="Living area &amp; fireplace" aria-label="Open photo gallery, living area and fireplace">
 <img src="photos/hero.webp" width="1440" height="1080" alt="Living area with seating, fireplace, and a view into the open-plan studio" fetchpriority="high">
 <span class="hero-image-label">Living area &amp; fireplace</span><span class="hero-gallery-label"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>All 10 photos</span>
 </button>
@@ -132,18 +146,30 @@ input,select{width:100%;min-width:0;min-height:44px;border:1px solid #cfc3b1;bor
 <a class="button" href="#inquire">Request dates <span aria-hidden="true">↗</span></a>
 </div>
 </section>
-<section class="gallery" id="photos" aria-labelledby="gallery-heading">
+<section class="gallery" aria-labelledby="gallery-heading">
 <div class="section-head"><p class="eyebrow">01 · Explore</p><h2 id="gallery-heading">Take a look around</h2></div>
-<div class="gallery-grid">
-<button type="button" data-photo="Golf-view balcony" aria-label="View photo: Golf-view balcony"><img src="photos/balcony.webp" width="1150" height="863" alt="Private balcony seating overlooking the Norwich Golf Course" loading="lazy" decoding="async"><span>Golf-view balcony</span></button>
-<button type="button" data-photo="Full kitchen" aria-label="View photo: Full kitchen"><img src="photos/kitchen.webp" width="1150" height="863" alt="Full kitchen with an updated tile backsplash, stove, sink, and coffee station" loading="lazy" decoding="async"><span>Full kitchen</span></button>
-<button type="button" data-photo="Inside the studio" aria-label="View photo: Inside the studio"><img src="photos/studio.webp" width="862" height="1150" alt="Sunny corner studio with a glimpse of the queen bed, fireplace, and balcony doors" loading="lazy" decoding="async"><span>Inside the studio</span></button>
-<button type="button" data-photo="Queen bed" aria-label="View photo: Queen bed"><img src="photos/bedroom.webp" width="862" height="1150" alt="Queen bed in the open-plan studio beside a mirrored wall" loading="lazy" decoding="async"><span>Queen bed</span></button>
-<button type="button" data-photo="Private bathroom" aria-label="View photo: Private bathroom"><img src="photos/bathroom.webp" width="862" height="1150" alt="Private bathroom vanity and mirror" loading="lazy" decoding="async"><span>Private bathroom</span></button>
-<button type="button" data-photo="Shared outdoor pool" aria-label="View photo: Shared outdoor pool"><img src="photos/pool.webp" width="862" height="1150" alt="Shared seasonal outdoor pool" loading="lazy" decoding="async"><span>Shared outdoor pool</span></button>
-<button type="button" data-photo="Shared indoor hot tub" aria-label="View photo: Shared indoor hot tub"><img src="photos/hot-tub.webp" width="862" height="1150" alt="Shared indoor clubhouse hot tub" loading="lazy" decoding="async"><span>Shared indoor hot tub</span></button>
-<button type="button" data-photo="Shared gym" aria-label="View photo: Shared gym"><img src="photos/gym.webp" width="1150" height="647" alt="Shared clubhouse fitness room with exercise machines" loading="lazy" decoding="async"><span>Shared gym</span></button>
-<button type="button" data-photo="Shared clubhouse lounge" aria-label="View photo: Shared clubhouse lounge"><img src="photos/clubhouse.webp" width="1150" height="863" alt="Shared clubhouse lounge with seating and a fireplace" loading="lazy" decoding="async"><span>Shared clubhouse lounge</span></button>
+<div class="photo-carousel" id="photos" role="region" aria-label="Villa 1021 photos" aria-roledescription="carousel">
+<div class="photo-stage">
+<a id="feature-photo-link" class="photo-primary" href="photos/balcony.webp" aria-label="Enlarge photo: Golf-view balcony">
+<img id="feature-photo" src="photos/balcony.webp" width="1150" height="863" alt="Private balcony seating overlooking the Norwich Golf Course" loading="lazy" decoding="async" draggable="false">
+<span class="photo-enlarge"><svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>Enlarge photo</span>
+</a>
+<button class="photo-arrow photo-prev" type="button" id="photo-prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+<button class="photo-arrow photo-next" type="button" id="photo-next" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+</div>
+<p class="photo-caption" id="feature-caption" aria-live="polite" aria-atomic="true">Golf-view balcony · 1 of 10</p>
+<div class="photo-thumbs" aria-label="Choose a photo">
+<a class="photo-thumb" href="photos/balcony.webp" data-photo="Golf-view balcony" aria-label="Photo 1 of 10: Golf-view balcony" aria-current="true"><img src="photos/balcony.webp" width="1150" height="863" alt="Private balcony seating overlooking the Norwich Golf Course" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/hero.webp" data-photo="Living area &amp; fireplace" aria-label="Photo 2 of 10: Living area &amp; fireplace"><img src="photos/hero.webp" width="1440" height="1080" alt="Living area with seating, fireplace, and a view into the open-plan studio" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/kitchen.webp" data-photo="Full kitchen" aria-label="Photo 3 of 10: Full kitchen"><img src="photos/kitchen.webp" width="1150" height="863" alt="Full kitchen with an updated tile backsplash, stove, sink, and coffee station" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/studio.webp" data-photo="Inside the studio" aria-label="Photo 4 of 10: Inside the studio"><img src="photos/studio.webp" width="862" height="1150" alt="Sunny corner studio with a glimpse of the queen bed, fireplace, and balcony doors" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/bedroom.webp" data-photo="Queen bed" aria-label="Photo 5 of 10: Queen bed"><img src="photos/bedroom.webp" width="862" height="1150" alt="Queen bed in the open-plan studio beside a mirrored wall" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/bathroom.webp" data-photo="Private bathroom" aria-label="Photo 6 of 10: Private bathroom"><img src="photos/bathroom.webp" width="862" height="1150" alt="Private bathroom vanity and mirror" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/pool.webp" data-photo="Shared outdoor pool" aria-label="Photo 7 of 10: Shared outdoor pool"><img src="photos/pool.webp" width="862" height="1150" alt="Shared seasonal outdoor pool" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/hot-tub.webp" data-photo="Shared indoor hot tub" aria-label="Photo 8 of 10: Shared indoor hot tub"><img src="photos/hot-tub.webp" width="862" height="1150" alt="Shared indoor clubhouse hot tub" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/gym.webp" data-photo="Shared gym" aria-label="Photo 9 of 10: Shared gym"><img src="photos/gym.webp" width="1150" height="647" alt="Shared clubhouse fitness room with exercise machines" loading="lazy" decoding="async"></a>
+<a class="photo-thumb" href="photos/clubhouse.webp" data-photo="Shared clubhouse lounge" aria-label="Photo 10 of 10: Shared clubhouse lounge"><img src="photos/clubhouse.webp" width="1150" height="863" alt="Shared clubhouse lounge with seating and a fireplace" loading="lazy" decoding="async"></a>
+</div>
 </div>
 </section>
 <section class="feature" id="amenities" aria-labelledby="amenities-heading">
@@ -196,25 +222,83 @@ input,select{width:100%;min-width:0;min-height:44px;border:1px solid #cfc3b1;bor
 </dialog>
 <script>
 "use strict";
+const carousel=document.querySelector("#photos"), stage=carousel.querySelector(".photo-stage"), strip=carousel.querySelector(".photo-thumbs");
+const photoLinks=Array.from(strip.querySelectorAll("[data-photo]"));
+const featureLink=document.querySelector("#feature-photo-link"), featureImage=document.querySelector("#feature-photo"), featureCaption=document.querySelector("#feature-caption");
 const viewer=document.querySelector("#viewer"), viewerImage=document.querySelector("#viewer-image"), viewerCaption=document.querySelector("#viewer-caption");
-const photoButtons=Array.from(document.querySelectorAll("[data-photo]"));
-let current=0,openedBy=null;
+let current=0, swipe=null, suppressClickUntil=0, viewerOpener=null;
 function showPhoto(index){
-  current=(index+photoButtons.length)%photoButtons.length;
-  const img=photoButtons[current].querySelector("img");
-  viewerImage.src=img.currentSrc||img.src;
-  viewerImage.alt=img.alt;
-  viewerCaption.textContent=photoButtons[current].dataset.photo+" · "+(current+1)+" of "+photoButtons.length;
+  current=(index+photoLinks.length)%photoLinks.length;
+  const link=photoLinks[current], image=link.querySelector("img");
+  const text=link.dataset.photo+" · "+(current+1)+" of "+photoLinks.length;
+  const url=link.href;
+  if(featureLink.href!==url){
+    featureImage.alt=image.alt;
+    featureImage.width=image.width;featureImage.height=image.height;
+    featureImage.src=url;
+    featureLink.href=url;
+  }
+  featureLink.setAttribute("aria-label","Enlarge photo: "+link.dataset.photo);
+  featureCaption.textContent=text;
+  photoLinks.forEach((thumb,i)=>{if(i===current)thumb.setAttribute("aria-current","true");else thumb.removeAttribute("aria-current");});
+  if(viewer.open){viewerImage.src=url;viewerImage.alt=image.alt;viewerCaption.textContent=text;}
+  const thumbBox=link.getBoundingClientRect(), stripBox=strip.getBoundingClientRect();
+  if(thumbBox.left<stripBox.left+4 || thumbBox.right>stripBox.right-4){
+    const movement=thumbBox.left<stripBox.left+4 ? thumbBox.left-stripBox.left-4 : thumbBox.right-stripBox.right+4;
+    strip.scrollBy({left:movement,behavior:"auto"});
+  }
 }
-photoButtons.forEach((button,index)=>button.addEventListener("click",()=>{
-  if(typeof viewer.showModal!=="function"){const img=button.querySelector("img");location.href=img.currentSrc||img.src;return;}
-  openedBy=button;showPhoto(index);viewer.showModal();
+photoLinks.forEach((link,i)=>link.addEventListener("click",event=>{
+  if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();showPhoto(i);
 }));
+function keys(event){
+  if(event.altKey||event.metaKey||event.ctrlKey)return;
+  if(event.key==="ArrowLeft"){event.preventDefault();showPhoto(current-1);}
+  if(event.key==="ArrowRight"){event.preventDefault();showPhoto(current+1);}
+}
+carousel.addEventListener("keydown",keys);
+document.querySelector("#photo-prev").addEventListener("click",()=>showPhoto(current-1));
+document.querySelector("#photo-next").addEventListener("click",()=>showPhoto(current+1));
+stage.addEventListener("pointerdown",event=>{
+  if(event.pointerType==="touch"&&event.isPrimary)swipe={x:event.clientX,y:event.clientY,id:event.pointerId};
+});
+stage.addEventListener("pointercancel",()=>{swipe=null;});
+stage.addEventListener("pointerup",event=>{
+  if(!swipe||swipe.id!==event.pointerId)return;
+  const dx=event.clientX-swipe.x,dy=event.clientY-swipe.y;swipe=null;
+  if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.35){
+    suppressClickUntil=Date.now()+350;
+    showPhoto(current+(dx<0?1:-1));
+  }
+});
+stage.addEventListener("click",event=>{
+  if(Date.now()<suppressClickUntil){event.preventDefault();event.stopImmediatePropagation();}
+},true);
+const originalHero=document.querySelector("#launch-hero-gallery");
+originalHero.addEventListener("click",()=>{
+  if(typeof viewer.showModal!=="function"){window.location.href=photoLinks[1].href;return;}
+  showPhoto(1);
+  openViewer(originalHero);
+});
+function openViewer(opener){
+  viewerOpener=opener;
+  viewerImage.src=featureLink.href;
+  viewerImage.alt=featureImage.alt;
+  viewerCaption.textContent=featureCaption.textContent;
+  viewer.showModal();
+}
+featureLink.addEventListener("click",event=>{
+  if(typeof viewer.showModal!=="function"||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();
+  openViewer(featureLink);
+});
 document.querySelector("#viewer-close").addEventListener("click",()=>viewer.close());
 document.querySelector("#viewer-prev").addEventListener("click",()=>showPhoto(current-1));
 document.querySelector("#viewer-next").addEventListener("click",()=>showPhoto(current+1));
-viewer.addEventListener("close",()=>{openedBy?.focus();});
-viewer.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){e.preventDefault();showPhoto(current-1);}if(e.key==="ArrowRight"){e.preventDefault();showPhoto(current+1);}});
+viewer.addEventListener("close",()=>{viewerOpener?.focus({preventScroll:true});});
+viewer.addEventListener("keydown",keys);
+carousel.classList.add("is-ready");
 
 const form=document.querySelector("#request-form"),start=document.querySelector("#arrival-day"),end=document.querySelector("#departure-day");
 const requestButton=document.querySelector("#request-button"),status=document.querySelector("#form-status"),manual=document.querySelector("#manual-message");
