@@ -47,16 +47,16 @@ nav a:hover{background:var(--light)}nav a[aria-current=page]{background:var(--so
 .hero-gallery-label{right:17px;background:#fff;color:var(--ink)}
 .hero-gallery-label svg{width:14px;height:14px;vertical-align:-2px;margin-right:4px}
 .photo-carousel{min-width:0}
-.photo-stage{position:relative;isolation:isolate;border-radius:var(--r);overflow:hidden;background:#201b15;touch-action:pan-y}
+.photo-stage{position:relative;isolation:isolate;border-radius:var(--r);overflow:hidden;background:var(--bg);touch-action:pan-y}
 .photo-primary{position:relative;width:100%;display:block;padding:0;margin:0;text-align:left;color:#fff}
 .photo-primary:focus-visible{outline-offset:-5px}
-.photo-primary img{display:block;width:100%;height:clamp(340px,57vw,620px);object-fit:contain;object-position:center;background:#241e17}
+.photo-primary img{display:block;width:100%;height:clamp(340px,57vw,620px);object-fit:contain;object-position:center;background:var(--bg)}
 .photo-enlarge{position:absolute;right:13px;bottom:13px;font-size:13px;font-weight:650;line-height:1.2;border-radius:999px;padding:7px 10px;background:#221a11e8;color:#fff}
 .photo-enlarge svg{width:15px;height:15px;vertical-align:-2px;margin-right:4px;color:#fff}
-.photo-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;padding:8px;border:1px solid #fff9;border-radius:50%;background:#251d12ed;color:white;place-items:center}
+.photo-arrow{display:none;position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;padding:8px;border:1px solid #cdbda6;border-radius:50%;background:var(--light);color:var(--accent);box-shadow:0 2px 9px #39261529;place-items:center}
 .photo-carousel.is-ready .photo-arrow{display:grid}
 .photo-arrow svg{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;width:22px;height:22px}
-.photo-arrow:hover{background:#3c2e20}.photo-arrow:focus-visible{outline-color:white}
+.photo-arrow:hover{background:var(--soft);color:var(--oak)}.photo-arrow:focus-visible{outline-color:var(--accent)}
 .photo-prev{left:13px}.photo-next{right:13px}
 .photo-caption{margin:12px 0 8px;text-align:center;font-size:14px;font-weight:650;color:var(--muted)}
 .photo-thumbs{display:flex;gap:8px;overflow-x:auto;padding:4px 4px 8px;scroll-padding-inline:4px;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#9b7a51 transparent}
@@ -103,9 +103,11 @@ input,select{width:100%;min-width:0;min-height:44px;border:1px solid #cfc3b1;bor
 .viewer::backdrop{background:#221d18d9}
 .viewer-head,.viewer-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px}
 .viewer-head p,.viewer-controls p{font-size:14px}
-.viewer img{display:block;width:100%;height:min(64dvh,620px);object-fit:contain;background:#231d16}
+.viewer img{display:block;width:100%;height:min(64dvh,620px);object-fit:contain;background:var(--bg)}
 .viewer button{font:inherit;font-size:14px;border:1px solid var(--line);background:white;border-radius:999px;min-width:44px;min-height:44px;padding:7px 10px;color:var(--ink)}
 .viewer button:hover{background:var(--soft)}
+.viewer-controls button{background:var(--light);color:var(--accent);border-color:#cdbda6}
+.viewer-controls button:hover{background:var(--soft);color:var(--oak)}
 @media(max-width:730px){.container{width:calc(100% - 30px)}.site-header{padding-top:14px}nav{margin-bottom:24px}.quick-strip{align-items:start}.feature,.location,.booking{grid-template-columns:1fr}}
 @media(max-width:460px){.intro{gap:8px}.lede{font-size:15px}.hero img{height:320px}.hero-image-label,.hero-gallery-label{bottom:10px;padding:7px 9px;font-size:12px}.hero-image-label{left:10px;max-width:calc(100% - 145px)}.hero-gallery-label{right:10px}.photo-primary img{height:clamp(270px,85vw,390px)}.photo-prev{left:7px}.photo-next{right:7px}.photo-arrow{width:44px;height:44px}.photo-enlarge{right:8px;bottom:8px;font-size:12px}.photo-thumb{flex-basis:64px}.photo-thumb img{height:46px}.quick-strip{flex-direction:column}.quick-strip ul{gap:7px 12px}.quick-strip>.button{width:100%}.amenity{padding:13px}.location .nearby{padding:15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
